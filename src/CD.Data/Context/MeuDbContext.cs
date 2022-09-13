@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CD.Data.Context
 {
-    internal class MeuDbContext : DbContext
+    public class MeuDbContext : DbContext
     {
         public MeuDbContext(DbContextOptions options) : base(options)
         {

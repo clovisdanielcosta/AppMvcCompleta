@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,12 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mappings\" />
     <Folder Include="Repository\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="microsoft.entityframeworkcore" Version="6.0.9" />
+    <PackageReference Include="microsoft.entityframeworkcore.relational" Version="6.0.9" />
   </ItemGroup>
 
   <ItemGroup>

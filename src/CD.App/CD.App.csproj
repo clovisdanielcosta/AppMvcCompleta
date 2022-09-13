@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-CdIO.App-C77D7BBE-9B30-41F7-B1B5-58846B4EFC08</UserSecretsId>
+    <UserSecretsId>aspnet-CD.App-45725E01-4D0B-4ADB-8A06-20765838B20B</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

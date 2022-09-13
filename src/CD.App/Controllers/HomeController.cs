@@ -1,8 +1,8 @@
-﻿using CdIO.App.Models;
+﻿using CD.App.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CdIO.App.Controllers
+namespace CD.App.Controllers
 {
     public class HomeController : Controller
     {

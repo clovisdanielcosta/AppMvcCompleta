@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace CdIO.App.Data
+namespace CD.App.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

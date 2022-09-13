@@ -1,4 +1,4 @@
-namespace CdIO.App.Models
+namespace CD.App.Models
 {
     public class ErrorViewModel
     {

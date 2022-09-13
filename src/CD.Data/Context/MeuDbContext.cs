@@ -11,9 +11,13 @@ namespace CD.Data.Context
 {
     public class MeuDbContext : DbContext
     {
-        public MeuDbContext(DbContextOptions options) : base(options)
-        {
+        public MeuDbContext(DbContextOptions options) : base(options){}
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MeuDbContext).Assembly);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Produto> Produtos { get; set; }

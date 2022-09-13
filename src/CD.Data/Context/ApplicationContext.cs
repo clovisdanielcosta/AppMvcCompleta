@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace CD.Data.Context
 {
-    public class MeuDbContext : DbContext
+    public class ApplicationContext : DbContext
     {
-        public MeuDbContext(DbContextOptions options) : base(options){}
+        public ApplicationContext(DbContextOptions options) : base(options){}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MeuDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
 
             base.OnModelCreating(modelBuilder);
         }

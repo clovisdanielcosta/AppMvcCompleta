@@ -10,6 +10,12 @@ namespace CD.Data.Repository
     {
         protected readonly MeuDbContext Db;
         protected readonly DbSet<TEntity> DbSet;
+
+        public Repository(MeuDbContext db)
+        {
+            Db = db;
+            DbSet = db.Set<TEntity>();
+        }
         
         public async Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> predicate)
         {

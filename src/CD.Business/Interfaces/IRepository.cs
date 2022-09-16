@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace CD.Business.Interfaces
 {
-    internal interface IRepository<TEntity> : IDisposable where TEntity : Entity
+    public interface IRepository<TEntity> : IDisposable where TEntity : Entity
     {
         Task Adicionar(TEntity entity);
         Task<TEntity> ObterPorId(Guid Id);    

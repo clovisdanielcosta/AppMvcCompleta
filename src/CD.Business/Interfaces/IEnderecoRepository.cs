@@ -2,7 +2,7 @@
 
 namespace CD.Business.Interfaces
 {
-    internal interface IEnderecoRepository : IRepository<Endereco>
+    public interface IEnderecoRepository : IRepository<Endereco>
     {
         Task<Endereco> ObterEnderecoPorFornecedor(int fornecedorId);
     }

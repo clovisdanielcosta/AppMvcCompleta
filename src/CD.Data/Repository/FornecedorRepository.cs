@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CD.Data.Repository
 {
-    internal class FornecedorRepository : Repository<Fornecedor>, IFornecedorRepository
+    public class FornecedorRepository : Repository<Fornecedor>, IFornecedorRepository
     {
         public FornecedorRepository(MeuDbContext db) : base(db)
         {

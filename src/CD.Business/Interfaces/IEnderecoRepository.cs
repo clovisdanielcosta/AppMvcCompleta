@@ -4,6 +4,6 @@ namespace CD.Business.Interfaces
 {
     public interface IEnderecoRepository : IRepository<Endereco>
     {
-        Task<Endereco> ObterEnderecoPorFornecedor(int fornecedorId);
+        Task<Endereco> ObterEnderecoPorFornecedor(Guid fornecedorId);
     }
 }

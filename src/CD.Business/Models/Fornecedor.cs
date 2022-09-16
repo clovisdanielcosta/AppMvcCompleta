@@ -10,6 +10,6 @@ namespace AppMvcBasica.Models
         public TipoFornecedor TipoFornecedor { get; set; }
         public Endereco Endereco { get; set; }
         public bool Ativo { get; set; }
-        public IEnumerable<Produto> Produto { get; set; }
+        public IEnumerable<Produto> Produtos { get; set; }
     }
 }

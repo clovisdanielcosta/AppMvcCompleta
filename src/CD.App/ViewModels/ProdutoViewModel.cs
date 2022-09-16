@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace AppMvcBasica.Models
+namespace AppMvcBasica.ViewModels
 {
     public class ProdutoViewModel
     {

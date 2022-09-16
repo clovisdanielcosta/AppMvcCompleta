@@ -9,7 +9,7 @@ namespace CD.Business.Interfaces
 {
     internal interface IFornecedorRepository : IRepository<Fornecedor>
     {
-        Task<Fornecedor> ObterFornecedorEndereco(Guid Id);
-        Task<Fornecedor> ObterFornecedorProdutosEndereco(Guid Id);
+        Task<Fornecedor> ObterFornecedorEndereco(Guid id);
+        Task<Fornecedor> ObterFornecedorProdutosEndereco(Guid id);
     }
 }

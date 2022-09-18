@@ -1,75 +1,132 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using CD.App.ViewModels;
+using CD.Business.Interfaces;
+using CD.Business.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CD.App.Controllers
 {
-    public class ProdutosController : Controller
+    public class ProdutosController : BaseController
     {
-        public ActionResult Index()
+        private readonly IProdutoRepository _produtoRepository;
+        private readonly IFornecedorRepository _fornecedorRepository;
+        private readonly IMapper _mapper;
+
+        public ProdutosController(IProdutoRepository produtoRepository, IFornecedorRepository fornecedorRepository ,IMapper mapper)
         {
-            return View();
+            _produtoRepository = produtoRepository;
+            _fornecedorRepository = fornecedorRepository;
+            _mapper = mapper;
         }
 
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(_mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoRepository.ObterProdutosFornecedores()));
         }
 
-        public ActionResult Create()
+        public async Task<IActionResult> Details(Guid id)
         {
-            return View();
+            var produtoViewModel = await ObterProduto(id);
+            
+            if(produtoViewModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(produtoViewModel);
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            var produtoViewModel = await PopularFornecedores(new ProdutoViewModel());
+            
+            return View(produtoViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(ProdutoViewModel produtoViewModel)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            produtoViewModel = await PopularFornecedores(produtoViewModel);
+
+            if(!ModelState.IsValid) return View(produtoViewModel);
+
+            await _produtoRepository.Adicionar(_mapper.Map<Produto>(produtoViewModel));
+
+            return View(produtoViewModel);
+
         }
 
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            return View();
-        }
+            var produtoViewModel = await ObterProduto(id);
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
+            if (produtoViewModel == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        public ActionResult Delete(int id)
-        {
-            return View();
+            return View(produtoViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(Guid id, ProdutoViewModel produtoViewModel)
         {
-            try
+            if (id != produtoViewModel.Id) return NotFound();
+
+            if (!ModelState.IsValid) return View(produtoViewModel);
+
+            
+            await _produtoRepository.Atualizar(_mapper.Map<Produto>(produtoViewModel));
+
+            return RedirectToAction("Index");
+
+
+        }
+
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var produto = await ObterProduto(id);
+
+            if (produto == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
+
+            return View(produto);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var produto = await ObterProduto(id);
+
+            if (produto == null)
             {
-                return View();
+                return NotFound();
             }
+
+            await _produtoRepository.Remover(id);
+
+            return View("Index");
+        }
+
+        public async Task<ProdutoViewModel> ObterProduto(Guid id)
+        {
+            var produto = _mapper.Map<ProdutoViewModel>(await _produtoRepository.ObterProdutoFornecedor(id));
+            produto.Fornecedores = _mapper.Map<IEnumerable<FornecedorViewModel>>(await _fornecedorRepository.ObterTodos()); 
+            
+            return produto;
+        }
+
+        public async Task<ProdutoViewModel> PopularFornecedores(ProdutoViewModel produto)
+        {
+            produto.Fornecedores = _mapper.Map<IEnumerable<FornecedorViewModel>>(await _fornecedorRepository.ObterTodos());
+
+            return produto;
         }
     }
 }

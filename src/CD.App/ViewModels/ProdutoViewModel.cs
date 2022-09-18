@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace AppMvcBasica.ViewModels
+namespace CD.App.ViewModels
 {
     public class ProdutoViewModel
     {
@@ -21,7 +21,7 @@ namespace AppMvcBasica.ViewModels
         [StringLength(1000, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Descricao { get; set; }
 
-        public IFormFile ImagemUpload { get; set; }
+        //public IFormFile ImagemUpload { get; set; }
 
         public string Imagem { get; set; }
 

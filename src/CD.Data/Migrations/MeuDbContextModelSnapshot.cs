@@ -17,12 +17,12 @@ namespace CD.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AppMvcBasica.Models.Endereco", b =>
+            modelBuilder.Entity("CD.Business.Models.Endereco", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +67,7 @@ namespace CD.Data.Migrations
                     b.ToTable("Enderecos", (string)null);
                 });
 
-            modelBuilder.Entity("AppMvcBasica.Models.Fornecedor", b =>
+            modelBuilder.Entity("CD.Business.Models.Fornecedor", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -92,7 +92,7 @@ namespace CD.Data.Migrations
                     b.ToTable("Fornecedores", (string)null);
                 });
 
-            modelBuilder.Entity("AppMvcBasica.Models.Produto", b =>
+            modelBuilder.Entity("CD.Business.Models.Produto", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -129,31 +129,31 @@ namespace CD.Data.Migrations
                     b.ToTable("Produtos", (string)null);
                 });
 
-            modelBuilder.Entity("AppMvcBasica.Models.Endereco", b =>
+            modelBuilder.Entity("CD.Business.Models.Endereco", b =>
                 {
-                    b.HasOne("AppMvcBasica.Models.Fornecedor", "Fornecedor")
+                    b.HasOne("CD.Business.Models.Fornecedor", "Fornecedor")
                         .WithOne("Endereco")
-                        .HasForeignKey("AppMvcBasica.Models.Endereco", "FornecedorId")
+                        .HasForeignKey("CD.Business.Models.Endereco", "FornecedorId")
                         .IsRequired();
 
                     b.Navigation("Fornecedor");
                 });
 
-            modelBuilder.Entity("AppMvcBasica.Models.Produto", b =>
+            modelBuilder.Entity("CD.Business.Models.Produto", b =>
                 {
-                    b.HasOne("AppMvcBasica.Models.Fornecedor", "Fornecedor")
-                        .WithMany("Produto")
+                    b.HasOne("CD.Business.Models.Fornecedor", "Fornecedor")
+                        .WithMany("Produtos")
                         .HasForeignKey("FornecedorId")
                         .IsRequired();
 
                     b.Navigation("Fornecedor");
                 });
 
-            modelBuilder.Entity("AppMvcBasica.Models.Fornecedor", b =>
+            modelBuilder.Entity("CD.Business.Models.Fornecedor", b =>
                 {
                     b.Navigation("Endereco");
 
-                    b.Navigation("Produto");
+                    b.Navigation("Produtos");
                 });
 #pragma warning restore 612, 618
         }

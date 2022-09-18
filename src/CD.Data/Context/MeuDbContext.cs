@@ -1,5 +1,4 @@
-﻿
-using AppMvcBasica.Models;
+﻿using CD.Business.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CD.Data.Context
@@ -8,7 +7,8 @@ namespace CD.Data.Context
     {
         public MeuDbContext(DbContextOptions options) : base(options)
         {
-            
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
         public DbSet<Produto> Produtos { get; set; }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace AppMvcBasica.Models
+﻿namespace CD.Business.Models
 {
     public class Endereco : Entity 
     {

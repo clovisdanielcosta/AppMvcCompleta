@@ -1,5 +1,5 @@
-﻿using AppMvcBasica.Models;
-using AppMvcBasica.ViewModels;
+﻿using CD.Business.Models;
+using CD.App.ViewModels;
 using AutoMapper;
 
 namespace CD.App.AutoMapper

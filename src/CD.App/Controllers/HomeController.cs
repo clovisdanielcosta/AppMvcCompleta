@@ -1,4 +1,4 @@
-﻿using CD.App.Models;
+﻿using CD.App.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

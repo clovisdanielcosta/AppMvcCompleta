@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace AppMvcBasica.ViewModels
+namespace CD.App.ViewModels
 {
     public class FornecedorViewModel
     {

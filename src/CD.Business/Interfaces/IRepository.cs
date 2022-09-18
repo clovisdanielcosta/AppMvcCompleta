@@ -1,4 +1,4 @@
-﻿using AppMvcBasica.Models;
+﻿using CD.Business.Models;
 using System.Linq.Expressions;
 
 namespace CD.Business.Interfaces

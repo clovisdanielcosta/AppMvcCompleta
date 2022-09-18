@@ -1,4 +1,4 @@
-﻿using AppMvcBasica.Models;
+﻿using CD.Business.Models;
 
 namespace CD.Business.Interfaces
 {

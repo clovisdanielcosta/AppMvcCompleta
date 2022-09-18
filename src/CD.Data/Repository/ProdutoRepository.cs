@@ -1,5 +1,5 @@
-﻿using AppMvcBasica.Models;
-using CD.Business.Interfaces;
+﻿using CD.Business.Interfaces;
+using CD.Business.Models;
 using CD.Data.Context;
 using Microsoft.EntityFrameworkCore;
 

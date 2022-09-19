@@ -31,7 +31,7 @@ namespace CD.App.Extensions
 
         public override void AddValidation(ClientModelValidationContext context)
         {
-            if (context == null) throw new ArgumentException(nameof(context));
+            if (context == null) throw new ArgumentException(null, nameof(context));
 
             MergeAttribute(context.Attributes, "data-val", "true");
             MergeAttribute(context.Attributes, "data-val-moeda", GetErrorMessage(context));

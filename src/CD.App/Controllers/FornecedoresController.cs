@@ -62,6 +62,7 @@ namespace CD.App.Controllers
             return View(fornecedorViewModel);
         }
 
+        [HttpPost]
         public async Task<IActionResult> Edit(Guid id, FornecedorViewModel fornecedorViewModel)
         {
             if (id != fornecedorViewModel.Id) return NotFound();

@@ -52,7 +52,7 @@ namespace CD.App.Controllers
 
             if(!ModelState.IsValid) return View(produtoViewModel);
 
-            var imgPrefixo = new Guid() + "_";
+            var imgPrefixo = Guid.NewGuid() + "_";
 
             if(! await UploadArquivo(produtoViewModel.ImagemUpload, imgPrefixo))
             {

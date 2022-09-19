@@ -32,6 +32,7 @@ namespace CD.App.ViewModels
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public decimal Valor { get; set; }
 
+        [DisplayName("Data de Cadastro")]
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }
 

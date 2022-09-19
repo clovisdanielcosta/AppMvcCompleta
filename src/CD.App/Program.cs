@@ -39,7 +39,7 @@ builder.Services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidati
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddControllersWithViews();
+
 
 builder.Services.AddControllersWithViews(o =>
 {

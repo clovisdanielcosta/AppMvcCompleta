@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using CD.App.Extensions;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace CD.App.ViewModels
@@ -27,6 +28,7 @@ namespace CD.App.ViewModels
 
         public string Imagem { get; set; }
 
+        [Moeda]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public decimal Valor { get; set; }
 

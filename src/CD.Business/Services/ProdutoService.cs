@@ -1,21 +1,22 @@
 ﻿using CD.Business.Interfaces;
 using CD.Business.Models;
+using CD.Business.Models.Validations;
 
 namespace CD.Business.Services
 {
     public class ProdutoService : BaseService, IProdutoService
     {
-        public Task Adicionar(Produto produto)
+        public async Task Adicionar(Produto produto)
         {
-            throw new NotImplementedException();
+            if (!ExecutarValidacao(new ProdutoValidation(), produto)) return;
         }
 
-        public Task Atualizar(Produto produto)
+        public async Task Atualizar(Produto produto)
         {
-            throw new NotImplementedException();
+            if (!ExecutarValidacao(new ProdutoValidation(), produto)) return;
         }
 
-        public Task Remover(Guid id)
+        public async Task Remover(Guid id)
         {
             throw new NotImplementedException();
         }

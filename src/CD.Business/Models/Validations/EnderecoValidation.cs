@@ -2,7 +2,7 @@
 
 namespace CD.Business.Models.Validations
 {
-    internal class EnderecoValidation : AbstractValidator<Endereco>
+    public class EnderecoValidation : AbstractValidator<Endereco>
     {
         public EnderecoValidation()
         {

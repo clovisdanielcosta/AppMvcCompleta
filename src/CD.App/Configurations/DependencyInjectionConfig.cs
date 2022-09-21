@@ -1,9 +1,12 @@
-﻿using CD.App.Extensions;
+﻿using CD.App.Data;
+using CD.App.Extensions;
 using CD.Business.Interfaces;
 using CD.Data.Context;
 using CD.Data.Repository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace CD.App.Configurations
 {
@@ -41,6 +44,23 @@ namespace CD.App.Configurations
 
                 o.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
+
+            return services;
+        }
+    }
+
+    public static class IdentityConfig
+    {
+        public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
 
             return services;
         }

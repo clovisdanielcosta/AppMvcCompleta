@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace CD.Business.Models.Validations
 {
-    public class FornecedorValidations : AbstractValidator<Fornecedor>
+    public class FornecedorValidation : AbstractValidator<Fornecedor>
     {
-        public FornecedorValidations()
+        public FornecedorValidation()
         {
             RuleFor(f => f.Nome)
                 .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido")

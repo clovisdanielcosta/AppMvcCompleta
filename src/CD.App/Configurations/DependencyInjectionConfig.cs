@@ -4,9 +4,11 @@ using CD.Business.Interfaces;
 using CD.Data.Context;
 using CD.Data.Repository;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace CD.App.Configurations
 {
@@ -63,6 +65,23 @@ namespace CD.App.Configurations
 
 
             return services;
+        }
+    }
+
+    public static class GlobalizationConfig
+    {
+        public static IApplicationBuilder AddGlobalizationConfig(this IApplicationBuilder app)
+        {
+            var defaultCulture = new CultureInfo("pt-BR");
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(defaultCulture),
+                SupportedCultures = new List<CultureInfo> { defaultCulture },
+                SupportedUICultures = new List<CultureInfo> { defaultCulture }
+            };
+            app.UseRequestLocalization(localizationOptions);
+
+            return app;
         }
     }
 }

@@ -56,6 +56,8 @@ namespace CD.App.Controllers
             var fornecedor = _mapper.Map<Fornecedor>(fornecedorViewModel);
             await _fornecedorService.Adicionar(fornecedor);
 
+            if (!OperacaoValida()) return View(fornecedorViewModel);
+
             return RedirectToAction("Index");
         }
 
@@ -83,6 +85,8 @@ namespace CD.App.Controllers
             var fornecedor = _mapper.Map<Fornecedor>(fornecedorViewModel);
             await _fornecedorService.Atualizar(fornecedor);
 
+            if (!OperacaoValida()) return View(await ObterFornecedorProdutosEndereco(id));
+
             return RedirectToAction("Index");
         }
 
@@ -108,6 +112,8 @@ namespace CD.App.Controllers
             if (fornecedorViewModel == null) return NotFound();
 
             await _fornecedorService.Remover(id);
+
+            if (!OperacaoValida()) return View(fornecedor);
 
             return RedirectToAction("Index");
         }

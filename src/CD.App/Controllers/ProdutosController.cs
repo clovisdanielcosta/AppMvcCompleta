@@ -159,7 +159,9 @@ namespace CD.App.Controllers
 
             if (!OperacaoValida()) return View(produto);
 
-            return View("Index");
+            TempData["Sucesso"] = "Produto excluído com sucesso!";
+
+            return RedirectToAction("Index");
         }
 
         public async Task<ProdutoViewModel> ObterProduto(Guid id)

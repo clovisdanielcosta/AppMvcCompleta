@@ -115,6 +115,8 @@ namespace CD.App.Controllers
 
             if (!OperacaoValida()) return View(fornecedor);
 
+            TempData["Sucesso"] = "Fornecedor excluído com sucesso!"; 
+
             return RedirectToAction("Index");
         }
 

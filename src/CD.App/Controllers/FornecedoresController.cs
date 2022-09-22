@@ -155,6 +155,8 @@ namespace CD.App.Controllers
 
             await _fornecedorService.AtualizarEndereco(_mapper.Map<Endereco>(fornecedorViewModel.Endereco));
 
+            if (!OperacaoValida()) return PartialView("_AtualizarEndereco", fornecedorViewModel);
+
             var url = Url.Action("ObterEndereco", "Fornecedores", new { id = fornecedorViewModel.Endereco.FornecedorId });
             return Json(new { success = true, url });
         }

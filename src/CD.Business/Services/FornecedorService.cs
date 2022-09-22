@@ -34,16 +34,32 @@ namespace CD.Business.Services
         {
             if (!ExecutarValidacao(new FornecedorValidation(), fornecedor)) return;
 
+            if (_fornecedorRepository.Buscar(f => f.Documento == fornecedor.Documento && f.Id != fornecedor.Id).Result.Any())
+            {
+                Notificar("Já existe um fornecedor com este documento infomado.");
+                return;
+            }
+
+            await _fornecedorRepository.Atualizar(fornecedor);
+
         }
 
         public async Task AtualizarEndereco(Endereco endereco)
         {
             if (!ExecutarValidacao(new EnderecoValidation(), endereco)) return;
+
+            await _enderecoRepository.Atualizar(endereco);
         }
 
         public async Task Remover(Guid id)
         {
-            throw new NotImplementedException();
+            if (_fornecedorRepository.ObterFornecedorProdutosEndereco(id).Result.Produtos.Any())
+            {
+                Notificar("O fornecedor possui produtos cadastrados!");
+                return;
+            }
+
+            await _fornecedorRepository.Remover(id);
         }
     }
 

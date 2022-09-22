@@ -2,7 +2,7 @@
 
 namespace CD.Business.Interfaces
 {
-    internal interface INotificador
+    public interface INotificador
     {
         bool TemNotificacao();
         List<Notificacao> ObterNotificacoes();

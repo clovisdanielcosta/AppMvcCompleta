@@ -11,5 +11,10 @@ namespace CD.App.Controllers
         {
             _notificador = notificador;
         }
+
+        public bool OperacaoValida()
+        {
+            return (!_notificador.TemNotificacao()) ; 
+        }
     }
 }

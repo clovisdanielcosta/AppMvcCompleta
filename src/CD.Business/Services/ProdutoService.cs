@@ -27,9 +27,14 @@ namespace CD.Business.Services
             await _produtoRepository.Atualizar(produto);
         }
 
+
         public async Task Remover(Guid id)
         {
             await _produtoRepository.Remover(id); 
+        }
+        public void Dispose()
+        {
+            _produtoRepository?.Dispose();
         }
     }
 

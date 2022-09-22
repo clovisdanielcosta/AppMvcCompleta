@@ -73,6 +73,8 @@ namespace CD.App.Controllers
 
             await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 
+            if(!OperacaoValida()) return View(produtoViewModel);
+
             return RedirectToAction("Index");
 
         }
@@ -121,6 +123,8 @@ namespace CD.App.Controllers
             
             await _produtoService.Atualizar(_mapper.Map<Produto>(produtoAtualizacao));
 
+            if (!OperacaoValida()) return View(produtoViewModel);
+
             return RedirectToAction("Index");
 
 
@@ -152,6 +156,8 @@ namespace CD.App.Controllers
             }
 
             await _produtoService.Remover(id);
+
+            if (!OperacaoValida()) return View(produto);
 
             return View("Index");
         }

@@ -107,9 +107,9 @@ namespace CD.App.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var fornecedorViewModel = await ObterFornecedorEndereco(id);
+            var fornecedor = await ObterFornecedorEndereco(id);
 
-            if (fornecedorViewModel == null) return NotFound();
+            if (fornecedor == null) return NotFound();
 
             await _fornecedorService.Remover(id);
 

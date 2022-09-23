@@ -75,6 +75,8 @@ namespace CD.App.Controllers
 
             if(!OperacaoValida()) return View(produtoViewModel);
 
+            TempData["Sucesso"] = "Produto incluído com sucesso!";
+
             return RedirectToAction("Index");
 
         }

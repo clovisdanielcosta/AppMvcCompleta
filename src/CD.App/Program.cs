@@ -1,11 +1,6 @@
-using CD.App.Data;
-using CD.Data.Context;
 using CD.App.Configurations;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc;
+using CD.Data.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +29,7 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
 }
 else

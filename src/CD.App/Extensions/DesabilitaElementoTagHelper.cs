@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace CD.App.Extensions
 {
+    [HtmlTargetElement("a", Attributes = "disable-by-claim-name")]
+    [HtmlTargetElement("a", Attributes = "disable-by-claim-value")]
     public class DesabilitaElementoTagHelper : TagHelper
     {
-        [HtmlTargetElement("a", Attributes = "disable-by-claim-name")]
-        [HtmlTargetElement("a", Attributes = "disable-by-claim-value")]
         public class DesabilitaLinkByClaimTagHelper : TagHelper
         {
             private readonly IHttpContextAccessor _contextAccessor;
